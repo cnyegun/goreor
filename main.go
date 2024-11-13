@@ -6,10 +6,16 @@ import (
 
 func main() {
 	mytask := def.Task{
-		Priority: "Urgent",
+		Priority: "High",
 		Due:      "24-11-2024",
 		Added:    "13-11-2024",
-		Content:  "Learn docker & install arch",
+		Content:  "Go to LIDL buy meat",
 	}
 	def.PrintTask(mytask)
+}
+
+func home_menu_loop() {
+	for {
+
+	}
 }

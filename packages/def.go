@@ -1,13 +1,15 @@
-package def 
+package def
 
 import (
 	"fmt"
 )
 
 type Task struct {
+	// Priority is one of {"Urgent", "High","Low"}
 	Priority string
-	Due string
-	Added string
+	// Due and Added is date in format "DD-MM-yyyy"
+	Due     string
+	Added   string
 	Content string
 }
 
@@ -18,8 +20,8 @@ type Label struct {
 
 func PrintTask(t Task) {
 	fmt.Println("@Task INFO:")
-	fmt.Println(">Priority:", t.Priority)
-	fmt.Println(">Added   :", t.Added)
-	fmt.Println(">Due     :", t.Due)
-	fmt.Println(">Content :", t.Content)
+	fmt.Println(" >Priority:", t.Priority)
+	fmt.Println(" >Added   :", t.Added)
+	fmt.Println(" >Due     :", t.Due)
+	fmt.Println(" >Content :", t.Content)
 }
