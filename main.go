@@ -11,42 +11,14 @@ func main() {
 }
 
 func home_menu_loop() {
-	labels := []def.Label{
-		{
-			Name: "Work",
-			Tasks: []def.Task{
-				{Id: 1, Priority: "Urgent", Due: "15-11-2024", Added: "01-11-2024", Content: "Finish report"},
-				{Id: 2, Priority: "High", Due: "20-11-2024", Added: "05-11-2024", Content: "Prepare presentation"},
-			},
-		},
-		{
-			Name: "Personal",
-			Tasks: []def.Task{
-				{Id: 1, Priority: "Low", Due: "25-12-2024", Added: "10-11-2024", Content: "Buy gifts"},
-				{Id: 2, Priority: "High", Due: "22-11-2024", Added: "12-11-2024", Content: "Book tickets"},
-			},
-		},
-		{
-			Name: "Fitness",
-			Tasks: []def.Task{
-				{Id: 1, Priority: "Urgent", Due: "15-11-2024", Added: "10-11-2024", Content: "Renew gym membership"},
-				{Id: 2, Priority: "Low", Due: "20-11-2024", Added: "05-11-2024", Content: "Buy new running shoes"},
-			},
-		},
-		{
-			Name: "Finance",
-			Tasks: []def.Task{
-				{Id: 1, Priority: "Low", Due: "25-12-2024", Added: "20-6-2024", Content: "Pay student loan"},
-				{Id: 2, Priority: "High", Due: "02-01-2025", Added: "21-6-2024", Content: "Buy more BTC"},
-			},
-		},
-	}
+	labels, _ := def.LoadData("data.json")
 
 	var cmd string
 	var opt string
 	var opt2 string
 	def.PrintHelp()
 	for {
+		def.SaveData(labels, "data.json")
 		opt = ""
 		cmd = ""
 		opt2 = ""
@@ -67,6 +39,8 @@ func home_menu_loop() {
 			labels = def.ChangeName(labels, opt, opt2)
 		case "ct":
 			def.CreateTask(labels, opt)
+		case "/?":
+			def.PrintHelp()
 		default:
 			fmt.Print("Invalid syntax '/?' for help\n")
 		}

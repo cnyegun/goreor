@@ -2,19 +2,18 @@ package def
 
 import (
 	"bufio"
+	"encoding/json"
 	"fmt"
 	"os"
 	"time"
 )
 
 type Task struct {
-	Id int
-	// Priority is one of {"Urgent", "High","Low"}
-	Priority string
-	// Due and Added is date in format "DD-MM-yyyy"
-	Due     string
-	Added   string
-	Content string
+	Id       int
+	Priority string // {"Urgent", "High", "Low"}
+	Due      string // "DD-MM-yyyy"
+	Added    string // "DD-MM-yyyy"
+	Content  string
 }
 
 type Label struct {
@@ -124,7 +123,8 @@ func ChangeName(l []Label, name string, new_name string) []Label {
 	length := len(l)
 	for i := 1; i < length; i++ {
 		if l[i].Name == name {
-			return append(l[:i], l[(i+1):]...)
+			l[i].Name = new_name
+			return l
 		}
 	}
 	fmt.Printf("Cannot find the label:%s\n", name)
@@ -194,4 +194,39 @@ func isValidDate(date string) bool {
 	layout := "02-01-2006"
 	_, err := time.Parse(layout, date)
 	return err == nil
+}
+
+// save data to a JSON file
+func SaveData(labels []Label, filename string) error {
+	data, err := json.MarshalIndent(labels, "", "  ")
+	if err != nil {
+		return fmt.Errorf("error marshalling data: %v", err)
+	}
+	err = os.WriteFile(filename, data, 0644)
+	if err != nil {
+		return fmt.Errorf("error writing to file: %v", err)
+	}
+	return nil
+}
+
+// load data from a JSON file
+func LoadData(filename string) ([]Label, error) {
+	// return empty slice if file doesn't exist
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		return []Label{}, nil
+	}
+
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, fmt.Errorf("error reading file: %v", err)
+	}
+
+	// Unmarshal the JSON data into a slice of Label structs
+	var labels []Label
+	err = json.Unmarshal(data, &labels)
+	if err != nil {
+		return nil, fmt.Errorf("error unmarshalling data: %v", err)
+	}
+
+	return labels, nil
 }

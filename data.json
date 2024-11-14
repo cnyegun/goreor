@@ -1,0 +1,64 @@
+[
+  {
+    "Name": "Work",
+    "Tasks": [
+      {
+        "Id": 1,
+        "Priority": "High",
+        "Due": "30-04-2024",
+        "Added": "01-04-2024",
+        "Content": "Finish the quarterly report"
+      },
+      {
+        "Id": 2,
+        "Priority": "Urgent",
+        "Due": "05-05-2024",
+        "Added": "02-04-2024",
+        "Content": "Prepare presentation for client meeting"
+      }
+    ]
+  },
+  {
+    "Name": "Personal",
+    "Tasks": [
+      {
+        "Id": 3,
+        "Priority": "Low",
+        "Due": "15-05-2024",
+        "Added": "05-04-2024",
+        "Content": "Buy groceries for the week"
+      },
+      {
+        "Id": 4,
+        "Priority": "High",
+        "Due": "20-04-2024",
+        "Added": "10-04-2024",
+        "Content": "Renew gym membership"
+      }
+    ]
+  },
+  {
+    "Name": "Fitness",
+    "Tasks": [
+      {
+        "Id": 5,
+        "Priority": "Urgent",
+        "Due": "10-05-2024",
+        "Added": "06-04-2024",
+        "Content": "Attend yoga class"
+      }
+    ]
+  },
+  {
+    "Name": "Wednesday",
+    "Tasks": [
+      {
+        "Id": 1,
+        "Priority": "Low",
+        "Due": "14-12-2026",
+        "Added": "14-11-2024",
+        "Content": "Buy a new Home\n"
+      }
+    ]
+  }
+]
