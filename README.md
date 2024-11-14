@@ -1,6 +1,11 @@
 # Go Task Organizer - *go.reor*
 
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Jan_Vermeer_van_Delft_019.jpg/270px-Jan_Vermeer_van_Delft_019.jpg" />
+</p>
+
 Welcome to `go.reor`, a **command-line contrivance of impeccable utility** that bestows upon its user the power to manage and organize tasks under the banner of customizable labels. Born of simplicity yet imbued with the elegance of purpose.
+
 ## Par Excellence Features
 
 - View labels
