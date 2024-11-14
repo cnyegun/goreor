@@ -60,13 +60,15 @@ func home_menu_loop() {
 		case "see":
 			def.SeeLabel(labels, opt)
 		case "cl":
-			def.NewLabel(labels, opt)
+			labels = def.NewLabel(labels, opt)
 		case "rm":
-			def.RemoveLabel(labels, opt)
+			labels = def.RemoveLabel(labels, opt)
 		case "cn":
-			def.ChangeName(labels, opt, opt2)
+			labels = def.ChangeName(labels, opt, opt2)
 		case "ct":
 			def.CreateTask(labels, opt)
+		default:
+			fmt.Print("Invalid syntax '/?' for help\n")
 		}
 	}
 }

@@ -60,7 +60,6 @@ func PrintHelp() {
 // Print the name of all label in stdout
 func ListLabels(l []Label) {
 	length := len(l)
-	fmt.Print("Labels: ")
 	for i := 0; i < length; i++ {
 		fmt.Printf("[%s] ", l[i].Name)
 	}
@@ -89,17 +88,44 @@ func printTasks(l Label) {
 
 // []Label String -> []Label
 // Create a new Label and put in []Label
-func NewLabel(l []Label, name string) {
+func NewLabel(l []Label, name string) []Label {
+	for i := 0; i < len(l); i++ {
+		if l[i].Name == name {
+			fmt.Printf("Label:%s existed\n", name)
+			return l
+		}
+	}
+	newLabel := Label{
+		Name:  name,
+		Tasks: []Task{},
+	}
+	return append(l, newLabel)
 }
 
 // []Label String -> []Label
 // Remove a Label from []Label
-func RemoveLabel(l []Label, name string) {
+func RemoveLabel(l []Label, name string) []Label {
+	length := len(l)
+	for i := 1; i < length; i++ {
+		if l[i].Name == name {
+			return append(l[:i], l[(i+1):]...)
+		}
+	}
+	fmt.Printf("Cannot find the label:%s\n", name)
+	return l
 }
 
 // []Label String String -> []Label
 // Search for the matching label and change the name of it
-func ChangeName(l []Label, name string, new_name string) {
+func ChangeName(l []Label, name string, new_name string) []Label {
+	length := len(l)
+	for i := 1; i < length; i++ {
+		if l[i].Name == name {
+			return append(l[:i], l[(i+1):]...)
+		}
+	}
+	fmt.Printf("Cannot find the label:%s\n", name)
+	return l
 }
 
 // []Label String -> []Label
