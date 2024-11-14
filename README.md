@@ -20,7 +20,7 @@ Welcome to `go.reor`, a **command-line contrivance of impeccable utility** that 
 To partake in the pleasures of `go.reor`, one must first acquire the code by way of cloning the repository:
 
 ```bash
-git clone https://github.com/yourusername/go.reor.git
+git clone https://github.com/cnyegun/go.reor.git
 ```
 
 ### A Catalogue of Commands
