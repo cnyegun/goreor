@@ -22,22 +22,22 @@ func home_menu_loop() {
 		{
 			Name: "Personal",
 			Tasks: []def.Task{
-				{Id: 3, Priority: "Low", Due: "25-12-2024", Added: "10-11-2024", Content: "Buy gifts"},
-				{Id: 4, Priority: "High", Due: "22-11-2024", Added: "12-11-2024", Content: "Book tickets"},
+				{Id: 1, Priority: "Low", Due: "25-12-2024", Added: "10-11-2024", Content: "Buy gifts"},
+				{Id: 2, Priority: "High", Due: "22-11-2024", Added: "12-11-2024", Content: "Book tickets"},
 			},
 		},
 		{
 			Name: "Fitness",
 			Tasks: []def.Task{
-				{Id: 5, Priority: "Urgent", Due: "15-11-2024", Added: "10-11-2024", Content: "Renew gym membership"},
-				{Id: 6, Priority: "Low", Due: "20-11-2024", Added: "05-11-2024", Content: "Buy new running shoes"},
+				{Id: 1, Priority: "Urgent", Due: "15-11-2024", Added: "10-11-2024", Content: "Renew gym membership"},
+				{Id: 2, Priority: "Low", Due: "20-11-2024", Added: "05-11-2024", Content: "Buy new running shoes"},
 			},
 		},
 		{
 			Name: "Finance",
 			Tasks: []def.Task{
-				{Id: 7, Priority: "Low", Due: "25-12-2024", Added: "20-6-2024", Content: "Pay student loan"},
-				{Id: 8, Priority: "High", Due: "02-01-2025", Added: "21-6-2024", Content: "Buy more BTC"},
+				{Id: 1, Priority: "Low", Due: "25-12-2024", Added: "20-6-2024", Content: "Pay student loan"},
+				{Id: 2, Priority: "High", Due: "02-01-2025", Added: "21-6-2024", Content: "Buy more BTC"},
 			},
 		},
 	}

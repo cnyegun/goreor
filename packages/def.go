@@ -1,7 +1,10 @@
 package def
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"time"
 )
 
 type Task struct {
@@ -76,7 +79,7 @@ func SeeLabel(l []Label, name string) {
 			return
 		}
 	}
-	fmt.Printf("Can't find label:%s\n", name)
+	fmt.Printf("Cannot find the label:%s\n", name)
 }
 
 func printTasks(l Label) {
@@ -130,5 +133,65 @@ func ChangeName(l []Label, name string, new_name string) []Label {
 
 // []Label String -> []Label
 // Create a task inside the given Label name String
-func CreateTask(l []Label, name string) {
+func CreateTask(l []Label, name string) []Label {
+	var newTask Task
+	for i := range len(l) {
+		if l[i].Name == name {
+			newTask = getTaskInfo()
+			newTask.Id = len(l[i].Tasks) + 1
+			l[i].Tasks = append(l[i].Tasks, newTask)
+			return l
+		}
+	}
+	fmt.Printf("Cannot find the label:%s\n", name)
+	return l
+}
+
+// Task -> Task
+// Get user input for Task property
+func getTaskInfo() Task {
+	var newTask Task
+	//input priority
+	for !isPriority(newTask.Priority) {
+		fmt.Printf("Priority is one of {\"Urgent\", \"High\",\"Low\"}\n")
+		fmt.Printf("Priority: ")
+		fmt.Scan(&newTask.Priority)
+	}
+	//input due
+	for !isValidDate(newTask.Due) {
+		fmt.Printf("Due date must be in format DD-MM-yyyy\n")
+		fmt.Printf("Due: ")
+		fmt.Scan(&newTask.Due)
+	}
+	//time added
+	newTask.Added = time.Now().Format("02-01-2006")
+	//content
+	fmt.Print("Content: ")
+	reader := bufio.NewReader(os.Stdin)
+	newTask.Content, _ = reader.ReadString('\n')
+	return newTask
+}
+
+// String -> Boolean
+// False if String is not one of Urgent, High, Low
+func isPriority(s string) bool {
+	validPriority := []string{
+		"Urgent",
+		"High",
+		"Low",
+	}
+	for i := range len(validPriority) {
+		if s == validPriority[i] {
+			return true
+		}
+	}
+	return false
+}
+
+// String -> Boolean
+// Verify if the string is in format DD-MM-YYYY
+func isValidDate(date string) bool {
+	layout := "02-01-2006"
+	_, err := time.Parse(layout, date)
+	return err == nil
 }
